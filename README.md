@@ -1,5 +1,5 @@
 # ha-gosenseapp
-This is an application that uses the gosense library to discover and publish sensor information to HA via the HA MQTT Discovery mechanism.
+This is an application that uses the gosense library (https://github.com/dariopb/gosense) to discover and publish sensor information to HA via the HA MQTT Discovery mechanism (https://www.home-assistant.io/docs/mqtt/discovery/) or simply by configuring the sensor info in the HA config file (https://www.home-assistant.io/docs/mqtt).
 
 # Configuration file
 
@@ -42,6 +42,22 @@ sensors:    <== sensor data is discovered and updated from the dongle
       state: "0"
       timeLastAlarm: "2019-07-06T00:20:09-07:00"
 ```
+
+# Run it!
+
+Linux 
+
+````
+# Create a config file as above and then mount that file to /app.yaml :
+sudo docker run -it --rm --net host -v /home/xxxx/gosenseapp/app.yaml:/app.yaml --privileged dariob/gosenseapp:latest
+````
+
+Raspberry PI 
+
+````
+# Create a config file as above and then mount that file:
+sudo docker run -it --rm --net host -v /home/pi/gosenseapp/app.yaml:/app.yaml --privileged dariob/gosenseapp-pi:latest
+````
 
 
 # MQTT Structure
