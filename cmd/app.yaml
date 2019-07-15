@@ -1,0 +1,9 @@
+debuglevel: info
+mqtt:
+  clientid: ha-gosenseapp-498081
+  hostname: localhost
+  user: ""
+  password: ""
+  port: 1883
+  sensorTopic: gosense
+  discoveryTopic: gosense_discovery
