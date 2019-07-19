@@ -94,7 +94,9 @@ This is the MQTT structure for the default MQTT settings:
 ````
 
 # REST API
-The application exposes a simple REST API to manipule the sense dongle and get "configuration ready" output to include in the HA conf file.
+The application exposes a simple REST API on port 8080 to manipule the sense dongle and get "configuration ready" output to include in the HA conf file.
+
+The endpoint should be: http://hostname:8080/xxx where xxx is as follows.
 
 **Routes exposed**
 

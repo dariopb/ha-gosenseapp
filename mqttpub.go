@@ -42,7 +42,7 @@ func NewMQTTPublisher(conf MQTT) *MQTTPublisher {
 	if SenseData.AppConfig.MQTT.User != "" {
 		log.Infof("    -> using username: [%s]", SenseData.AppConfig.MQTT.User)
 		p.clientOptions.SetUsername(SenseData.AppConfig.MQTT.User)
-		p.clientOptions.SetUsername(SenseData.AppConfig.MQTT.Password)
+		p.clientOptions.SetPassword(SenseData.AppConfig.MQTT.Password)
 	}
 	p.clientOptions.SetClientID(SenseData.AppConfig.MQTT.ClientId)
 	p.clientOptions.SetCleanSession(false)
