@@ -112,7 +112,10 @@ func Run() {
 	log.SetOutput(os.Stdout)
 
 	var err error
-	confFilename := "app.yaml"
+	confFilename, ok := os.LookupEnv("CONFIG_FILE")
+	if !ok {
+		confFilename = "app.yaml"
+	}
 	SenseData, err = NewAppData(confFilename)
 	if err != nil {
 		os.Exit(3)

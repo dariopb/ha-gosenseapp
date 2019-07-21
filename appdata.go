@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math/rand"
+	"path"
+
+	"encoding/json"
 
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
@@ -49,7 +52,15 @@ func (c *ConfigFile) Unlock() {
 }
 
 func (c *ConfigFile) Save(a *AppConfig) error {
-	bytes, err := yaml.Marshal(a)
+	var bytes []byte
+	var err error
+
+	if path.Ext(c.Filename) == ".yaml" {
+		bytes, err = yaml.Marshal(a)
+	} else {
+		bytes, err = json.Marshal(a)
+	}
+
 	if err != nil {
 		return err
 	}
@@ -70,7 +81,11 @@ func (c *ConfigFile) LoadConfig() (*ConfigFile, error) {
 	}
 
 	var ac AppConfig
-	err = yaml.Unmarshal(bytes, &ac)
+	if path.Ext(c.Filename) == ".yaml" {
+		err = yaml.Unmarshal(bytes, &ac)
+	} else {
+		err = json.Unmarshal(bytes, &ac)
+	}
 	if err != nil {
 		return nil, err
 	}
