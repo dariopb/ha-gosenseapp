@@ -208,7 +208,13 @@ loop:
 		case a := <-alarmch:
 			log.Infof("ALARM: %s, state: %d",
 				a.MAC, a.State)
-
+			// Only Alarms with flag 0xA2 (162) signal an open/close/motion alarm
+			if int(a.SensorFlags) != 162 {
+				log.Infof("ALARM: Ignoring Alarm with unknown flag: %x",
+					  a.SensorFlags)
+				break
+			}
+			
 			SenseData.Lock()
 			sensor, ok := SenseData.AppConfig.Sensors[a.MAC]
 			if ok {
