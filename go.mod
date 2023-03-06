@@ -6,7 +6,7 @@ require (
 	github.com/dariopb/gosense v0.0.0-00010101000000-000000000000
 	github.com/eclipse/paho.mqtt.golang v1.2.0
 	github.com/fatih/structs v1.1.0
-	github.com/gorilla/websocket v1.4.0
+	github.com/gorilla/websocket v1.4.1
 	github.com/labstack/echo/v4 v4.1.6
 	github.com/neko-neko/echo-logrus/v2 v2.0.0
 	github.com/sirupsen/logrus v1.4.2
